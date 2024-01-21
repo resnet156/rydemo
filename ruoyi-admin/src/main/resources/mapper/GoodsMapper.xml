@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.demoOne.dao.mapper.GoodsMapper">
+    <insert id="save" parameterType="com.ruoyi.demoOne.dao.entiy.Goods" useGeneratedKeys="true" keyProperty="id">
+        insert into ry_vue.goods(name, price, status, type)
+            VALUES (#{params.name},#{params.price},#{params.status},#{params.type})
+    </insert>
+    <update id="update" parameterType="com.ruoyi.demoOne.dao.entiy.Goods">
+        update ry_vue.goods
+        set name = #{params.name}, price = #{params.price}, status = #{params.status}, type = #{params.type}
+        where id = #{params.id}
+    </update>
+    <delete id="delete" parameterType="integer">
+        delete from ry_vue.goods where id = #{id}
+    </delete>
+
+
+    <select id="getGoods" resultType="com.ruoyi.demoOne.dao.entiy.Goods">
+        select * from ry_vue.goods;
+    </select>
+    <select id="getOne" resultType="com.ruoyi.demoOne.dao.entiy.Goods">
+        select *
+        from ry_vue.goods
+        where id = #{id}
+    </select>
+</mapper>
